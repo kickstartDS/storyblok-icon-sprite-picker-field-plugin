@@ -1,5 +1,6 @@
 import { FunctionComponent } from 'react'
 import { useFieldPlugin } from '@storyblok/field-plugin/react'
+import { useStory, useStoryblokApi } from '../hooks/useStoryblok'
 import { useIconIds } from '../hooks/useIconIds'
 import Modal from './Modal'
 import Stage from './Stage'
@@ -14,7 +15,12 @@ const fieldPluginOptions = {
 const App: FunctionComponent = () => {
   const plugin = useFieldPlugin(fieldPluginOptions)
   const { type, data, actions } = plugin
-  const iconIds = useIconIds(data?.options.icons)
+  const storyblokApi = useStoryblokApi(data?.token)
+  const iconSpriteHtml: string | undefined = useStory(
+    'cdn/stories/settings/global-settings',
+    storyblokApi,
+  )?.content.iconSprite
+  const iconIds = useIconIds(iconSpriteHtml)
 
   if (type !== 'loaded') {
     return null

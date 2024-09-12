@@ -10,19 +10,22 @@
 
 .btn {
   font-size: 0.875rem;
-  line-height: 1rem;
   font-weight: 500;
   display: inline-flex;
+  justify-content: center;
+  align-items: center;
   padding: 0.8125rem 1rem;
-  background: transparent;
+  background-color: var(--white);
   border: 1px solid var(--light);
   border-radius: 0.3125rem;
   cursor: pointer;
   transition: background-color 0.2s ease-in-out;
 }
 
-.btn:hover {
-  background-color: var(--light_75);
+.btn:hover,
+.btn:focus {
+  background-color: var(--light_50);
+  border-color: var(--sb_green);
 }
 .btn[aria-selected='true'] {
   border: 2px solid var(--sb_green);
@@ -47,13 +50,11 @@
 .btn-clear {
   position: absolute;
   border-radius: 50%;
-  padding: 0.5rem;
+  padding: 0;
   transform: translate(-50%, -50%);
-  background-color: var(--white);
   width: 2.125rem;
   height: 2.125rem;
-  justify-content: center;
-  align-items: center;
+  font-size: 0.75rem;
 }
 
 .sr-only {
